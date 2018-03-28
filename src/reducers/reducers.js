@@ -46,7 +46,7 @@ export const removeTodo = todo => {
 
 export const toggleDone = todo => ({
   type: 'TOGGLE_DONE',
-  todo: todo
+  todo
 })
 
 export default todoReducer
