@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { editTodo } from './reducers/reducers'
+import { editTodo, toggleDone, removeTodo } from './reducers/reducers'
 
 class Todo extends Component {
   state = {
@@ -35,13 +35,17 @@ class Todo extends Component {
   )
 
   render() {
-    const { todo, handleToggle, handleRemove } = this.props
+    const { todo, toggleDone, removeTodo } = this.props
     const { editable } = this.state
     return (
       <li onKeyPress={this.toggleEdit}>
         {!editable ? this.renderNormal(todo) : this.renderEditable(todo)}
-        <input onChange={handleToggle} type="checkbox" checked={todo.done} />
-        <button type="submit" onClick={handleRemove}>
+        <input
+          onChange={() => toggleDone(todo)}
+          type="checkbox"
+          checked={todo.done}
+        />
+        <button type="submit" onClick={() => removeTodo(todo)}>
           remove
         </button>
       </li>
@@ -49,4 +53,4 @@ class Todo extends Component {
   }
 }
 
-export default connect(null, { editTodo })(Todo)
+export default connect(null, { editTodo, toggleDone, removeTodo })(Todo)
