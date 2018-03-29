@@ -17,8 +17,7 @@ class Todo extends Component {
   renderNormal = todo => <span onClick={this.toggleEdit}>{todo.name}</span>
 
   handleEdit = (e, todo) => {
-    const newName = e.target.value
-    this.props.editTodo(todo, newName)
+    this.props.editTodo(todo, e.target.value)
   }
 
   renderEditable = todo => (
