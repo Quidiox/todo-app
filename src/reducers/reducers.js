@@ -1,7 +1,7 @@
 const initialState = [
-  { name: 'first', id: 1, done: false },
-  { name: 'second', id: 2, done: true },
-  { name: 'third', id: 3, done: false }
+  { name: 'first', done: false, id: 1 },
+  { name: 'second', done: true, id: 2 },
+  { name: 'third', done: false, id: 3 }
 ]
 
 const findIndex = (state, id) => state.findIndex(todo => todo.id === id)
@@ -14,17 +14,11 @@ const todoReducer = (state = initialState, action) => {
     case 'REMOVE_TODO':
       return [...state.slice(0, index), ...state.slice(index + 1)]
     case 'TOGGLE_DONE':
-      return Object.assign([...state], {
-        [index]: Object.assign({}, state[index], {
-          done: !state[index].done
-        })
-      })
-    /* const newState = [...state]
       return [
-        ...newState.slice(0, index),
-        Object.assign({}, newState[index], { done: !newState[index].done }),
-        ...newState.slice(index + 1)
-      ] */
+        ...state.slice(0, index),
+        Object.assign({}, state[index], { done: !state[index].done }),
+        ...state.slice(index + 1)
+      ]
     default:
       return state
   }

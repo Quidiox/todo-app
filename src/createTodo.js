@@ -5,10 +5,12 @@ const uuidv1 = require('uuid/v1')
 
 const handleSubmit = (e, props) => {
   e.preventDefault()
+  const name = e.target.name.value
+  e.target.name.value = ''
   props.createTodo({
-    id: uuidv1(),
-    name: e.target.name.value,
-    done: false
+    name,
+    done: false,
+    id: uuidv1()
   })
 }
 

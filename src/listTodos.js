@@ -3,15 +3,15 @@ import { connect } from 'react-redux'
 import { toggleDone, removeTodo } from './reducers/reducers'
 import Todo from './todo'
 
-const ListTodos = props => {
+const ListTodos = ({todos, toggleDone, removeTodo}) => {
   return (
     <ul>
-      {props.todos.map(todo => (
+      {todos.map(todo => (
         <Todo
           key={todo.id}
           todo={todo}
-          handleToggle={() => props.toggleDone(todo)}
-          handleRemove={() => props.removeTodo(todo)}
+          handleToggle={() => toggleDone(todo)}
+          handleRemove={() => removeTodo(todo)}
         />
       ))}
     </ul>

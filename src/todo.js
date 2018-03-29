@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Todo = props => {
+const Todo = ({todo, handleToggle, handleRemove}) => {
   return (
     <li>
-      {props.todo.name}{' '}
+      {todo.name}{' '}
       <input
-        onChange={props.handleToggle}
+        onChange={handleToggle}
         type="checkbox"
-        checked={props.todo.done}
+        checked={todo.done}
       />
-      <button type="submit" onClick={props.handleRemove}>
+      <button type="submit" onClick={handleRemove}>
         remove
       </button>
     </li>
