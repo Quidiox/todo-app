@@ -13,6 +13,12 @@ const todoReducer = (state = initialState, action) => {
       return [...state, action.todo]
     case 'REMOVE_TODO':
       return [...state.slice(0, index), ...state.slice(index + 1)]
+    case 'EDIT_TODO':
+      return [
+        ...state.slice(0, index),
+        Object.assign({}, state[index], { name: action.newName }),
+        ...state.slice(index + 1)
+      ]
     case 'TOGGLE_DONE':
       return [
         ...state.slice(0, index),
@@ -41,6 +47,12 @@ export const removeTodo = todo => {
 export const toggleDone = todo => ({
   type: 'TOGGLE_DONE',
   todo
+})
+
+export const editTodo = (todo, newName) => ({
+  type: 'EDIT_TODO',
+  todo,
+  newName
 })
 
 export default todoReducer
