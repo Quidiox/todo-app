@@ -6,7 +6,7 @@ class Todo extends Component {
   state = {
     editable: false
   }
-
+  
   toggleEdit = e => {
     if (this.state.editable && e.key === 'Enter')
       this.setState({ editable: false })
