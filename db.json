@@ -1,0 +1,7 @@
+{
+  "todos": [
+    { "name": "first", "done": false, "id": 1 },
+    { "name": "second", "done": true, "id": 2 },
+    { "name": "third", "done": false, "id": 3 }
+  ]
+}

@@ -1,9 +1,15 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import todoReducer from './reducers/reducers'
+import rootSaga from './sagas/sagas'
+
+const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
   combineReducers({ todos: todoReducer }),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  applyMiddleware(sagaMiddleware)
 )
+
+sagaMiddleware.run(rootSaga)
 
 export default store

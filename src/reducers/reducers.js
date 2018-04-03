@@ -1,14 +1,16 @@
-const initialState = [
-  { name: 'first', done: false, id: 1 },
-  { name: 'second', done: true, id: 2 },
-  { name: 'third', done: false, id: 3 }
-]
+// const initialState = [
+//   { name: 'first', done: false, id: 1 },
+//   { name: 'second', done: true, id: 2 },
+//   { name: 'third', done: false, id: 3 }
+// ]
 
 const findIndex = (state, id) => state.findIndex(todo => todo.id === id)
 
-const todoReducer = (state = initialState, action) => {
+const todoReducer = (state = [], action) => {
   const index = action.todo ? findIndex(state, action.todo.id) : 0
   switch (action.type) {
+    case 'ALL_TODOS':
+      return [...action.todos]
     case 'CREATE_TODO':
       return [...state, action.todo]
     case 'REMOVE_TODO':
@@ -27,6 +29,19 @@ const todoReducer = (state = initialState, action) => {
       ]
     default:
       return state
+  }
+}
+
+export const initializeTodos = todos => {
+  return {
+    type: 'ALL_TODOS',
+    todos
+  }
+}
+
+export const requestAllTodos = () => {
+  return {
+    type: 'GET_ALL_TODOS'
   }
 }
 
