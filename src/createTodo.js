@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createTodo } from './reducers/reducers'
+import { bindActionCreators } from 'redux'
+import { requestCreateTodo } from './reducers/reducers'
 const uuidv1 = require('uuid/v1')
 
-const handleSubmit = (e, { createTodo }) => {
+const handleSubmit = (e, { requestCreateTodo }) => {
   e.preventDefault()
   const name = e.target.name.value
   e.target.name.value = ''
-  createTodo({
+  requestCreateTodo({
     name,
     done: false,
     id: uuidv1()
@@ -23,4 +24,8 @@ const CreateTodo = props => {
   )
 }
 
-export default connect(null, { createTodo })(CreateTodo)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ requestCreateTodo }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(CreateTodo)

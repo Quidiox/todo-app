@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { editTodo, toggleDone, removeTodo } from './reducers/reducers'
 
@@ -52,4 +53,8 @@ class Todo extends Component {
   }
 }
 
-export default connect(null, { editTodo, toggleDone, removeTodo })(Todo)
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ editTodo, toggleDone, removeTodo }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(Todo)

@@ -1,7 +1,24 @@
 {
   "todos": [
-    { "name": "first", "done": false, "id": 1 },
-    { "name": "second", "done": true, "id": 2 },
-    { "name": "third", "done": false, "id": 3 }
+    {
+      "name": "first",
+      "done": false,
+      "id": 1
+    },
+    {
+      "name": "second",
+      "done": true,
+      "id": 2
+    },
+    {
+      "name": "third",
+      "done": false,
+      "id": 3
+    },
+    {
+      "name": "fourth",
+      "done": false,
+      "id": "6052e280-37f5-11e8-b635-45b500517109"
+    }
   ]
 }

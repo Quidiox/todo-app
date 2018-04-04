@@ -52,6 +52,13 @@ export const createTodo = todo => {
   }
 }
 
+export const requestCreateTodo = todo => {
+  return {
+    type: 'REQUEST_CREATE_TODO',
+    todo
+  }
+}
+
 export const removeTodo = todo => {
   return {
     type: 'REMOVE_TODO',

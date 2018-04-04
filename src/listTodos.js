@@ -6,7 +6,6 @@ import { requestAllTodos } from './reducers/reducers'
 
 class ListTodos extends React.Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.requestAllTodos()
   }
 
