@@ -17,7 +17,7 @@ function* watchGetTodos() {
 
 function* newTodo(action) {
   try {
-    const response = yield call(apiService.createTodo, { todo: action.todo })
+    const response = yield call(apiService.createTodo, action.todo)
     yield put(createTodo(response))
   } catch (error) {
     console.log(error)
@@ -26,6 +26,17 @@ function* newTodo(action) {
 
 function* watchNewTodo() {
   yield takeLatest('REQUEST_CREATE_TODO', newTodo)
+}
+
+function* modifyTodo(action) {
+  try {
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* watchModifyTodo() {
+  yield takeLatest('REQUEST_EDIT_TODO', modifyTodo)
 }
 
 export default function* rootSaga() {

@@ -9,7 +9,7 @@ const fetchTodos = async () => {
   }
 }
 
-const createTodo = async ({ todo }) => {
+const createTodo = async todo => {
   try {
     const response = await fetch(baseUrl + 'todos', {
       method: 'POST',
@@ -22,10 +22,11 @@ const createTodo = async ({ todo }) => {
   }
 }
 
-const removeTodo = async todo => {
+const editTodo = async todo => {
   try {
     await fetch(baseUrl + 'todos/' + todo.id, {
-      method: 'DELETE',
+      method: 'PUT',
+      body: JSON.stringify(todo),
       headers: new Headers({ 'Content-Type': 'application/json' })
     })
   } catch (error) {
@@ -33,11 +34,10 @@ const removeTodo = async todo => {
   }
 }
 
-const editTodo = async todo => {
+const removeTodo = async todo => {
   try {
     await fetch(baseUrl + 'todos/' + todo.id, {
-      method: 'PUT',
-      body: JSON.stringify(todo),
+      method: 'DELETE',
       headers: new Headers({ 'Content-Type': 'application/json' })
     })
   } catch (error) {

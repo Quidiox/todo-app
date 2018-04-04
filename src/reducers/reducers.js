@@ -1,9 +1,3 @@
-// const initialState = [
-//   { name: 'first', done: false, id: 1 },
-//   { name: 'second', done: true, id: 2 },
-//   { name: 'third', done: false, id: 3 }
-// ]
-
 const findIndex = (state, id) => state.findIndex(todo => todo.id === id)
 
 const todoReducer = (state = [], action) => {
