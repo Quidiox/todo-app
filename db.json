@@ -1,38 +1,6 @@
 {
   "todos": [
     {
-      "done": false,
-      "id": 1
-    },
-    {
-      "name": "moissss",
-      "done": true,
-      "id": 2
-    },
-    {
-      "name": "third",
-      "done": false,
-      "id": 3
-    },
-    {
-      "name": "fourth",
-      "done": false,
-      "id": "6052e280-37f5-11e8-b635-45b500517109"
-    },
-    {
-      "id": 4
-    },
-    {
-      "name": "sixth",
-      "done": false,
-      "id": "4f2c9f40-3800-11e8-8f07-97028761b33a"
-    },
-    {
-      "name": "seventh",
-      "done": false,
-      "id": "42fa1ad0-3801-11e8-b927-05e8dad3da52"
-    },
-    {
       "name": "eigth",
       "done": false,
       "id": "582bd330-3801-11e8-ad67-3b9c031f7b34"
@@ -51,24 +19,6 @@
       "name": "eleventh",
       "done": false,
       "id": "4ed1ea30-3802-11e8-8c08-c91eba0023d3"
-    },
-    {
-      "id": 5
-    },
-    {
-      "name": "hi world",
-      "done": false,
-      "id": "3bdd9a80-3809-11e8-b7c6-6d340b28c7a9"
-    },
-    {
-      "name": "commander",
-      "done": false,
-      "id": "2611b300-38cf-11e8-8aa6-311ff403be1a"
-    },
-    {
-      "name": "moi",
-      "done": false,
-      "id": "3b6a2d40-38cf-11e8-af3f-2f17d1f31af4"
     }
   ]
 }

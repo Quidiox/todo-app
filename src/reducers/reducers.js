@@ -28,39 +28,34 @@ const todoReducer = (state = [], action) => {
   }
 }
 
-export const initializeTodos = todos => {
-  return {
-    type: 'ALL_TODOS',
-    todos
-  }
-}
+export const initializeTodos = todos => ({
+  type: 'ALL_TODOS',
+  todos
+})
 
-export const requestAllTodos = () => {
-  return {
-    type: 'GET_ALL_TODOS'
-  }
-}
+export const requestAllTodos = () => ({
+  type: 'GET_ALL_TODOS'
+})
 
-export const createTodo = todo => {
-  return {
-    type: 'CREATE_TODO',
-    todo
-  }
-}
+export const createTodo = todo => ({
+  type: 'CREATE_TODO',
+  todo
+})
 
-export const requestCreateTodo = todo => {
-  return {
-    type: 'REQUEST_CREATE_TODO',
-    todo
-  }
-}
+export const requestCreateTodo = todo => ({
+  type: 'REQUEST_CREATE_TODO',
+  todo
+})
 
-export const removeTodo = todo => {
-  return {
-    type: 'REMOVE_TODO',
-    todo
-  }
-}
+export const removeTodo = todo => ({
+  type: 'REMOVE_TODO',
+  todo
+})
+
+export const requestRemoveTodo = todo => ({
+  type: 'REQUEST_REMOVE_TODO',
+  todo
+})
 
 export const toggleDone = todo => ({
   type: 'TOGGLE_DONE',

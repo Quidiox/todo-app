@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { requestEditTodo, toggleDone, removeTodo } from './reducers/reducers'
+import { requestEditTodo, toggleDone, requestRemoveTodo } from './reducers/reducers'
 
 class Todo extends Component {
   state = {
@@ -35,23 +35,24 @@ class Todo extends Component {
 
   handleEdit = (e, todo) => {
     e.preventDefault()
+    console.log(todo)
     const newTodo = Object.assign({}, todo, { name: e.target.name.value })
     this.props.requestEditTodo(newTodo)
     this.setState({editable: false})
   }
 
   render() {
-    const { todo, toggleDone, removeTodo } = this.props
+    const { todo, toggleDone, requestRemoveTodo } = this.props
     const { editable } = this.state
     return (
       <li onKeyPress={this.toggleEdit}>
         {!editable ? this.renderNormal(todo) : this.renderEditable(todo)}
         <input
-          onChange={() => toggleDone(todo)}
+          onChange={(e) => toggleDone(todo)}
           type="checkbox"
           checked={todo.done}
         />
-        <button type="submit" onClick={() => removeTodo(todo)}>
+        <button type="submit" onClick={() => requestRemoveTodo(todo)}>
           remove
         </button>
       </li>
@@ -61,7 +62,7 @@ class Todo extends Component {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { requestEditTodo, toggleDone, removeTodo },
+    { requestEditTodo, toggleDone, requestRemoveTodo },
     dispatch
   )
 }
