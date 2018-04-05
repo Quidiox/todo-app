@@ -10,11 +10,8 @@ class ListTodos extends React.Component {
   }
 
   render() {
-    return (
-      <ul>
-        {this.props.todos.map(todo => <Todo key={todo.id} todo={todo} />)}
-      </ul>
-    )
+    const todos = this.props.todos
+    return <ul>{todos.map(todo => <Todo key={todo.id} todo={todo} />)}</ul>
   }
 }
 

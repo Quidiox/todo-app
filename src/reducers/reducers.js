@@ -1,7 +1,9 @@
 const findIndex = (state, id) => state.findIndex(todo => todo.id === id)
 
 const todoReducer = (state = [], action) => {
-  const index = action.todo ? findIndex(state, action.todo.id) : 0
+  console.log('ACTION TYPE:', action.type)
+  console.log('ACTION DATA:', action.todo)
+  const index = action.todo ? findIndex(state, action.todo.id) : ''
   switch (action.type) {
     case 'ALL_TODOS':
       return [...action.todos]
@@ -12,7 +14,7 @@ const todoReducer = (state = [], action) => {
     case 'EDIT_TODO':
       return [
         ...state.slice(0, index),
-        Object.assign({}, state[index], { name: action.newName }),
+        Object.assign({}, action.todo),
         ...state.slice(index + 1)
       ]
     case 'TOGGLE_DONE':
@@ -65,10 +67,14 @@ export const toggleDone = todo => ({
   todo
 })
 
-export const editTodo = (todo, newName) => ({
+export const editTodo = todo => ({
   type: 'EDIT_TODO',
-  todo,
-  newName
+  todo
+})
+
+export const requestEditTodo = todo => ({
+  type: 'REQUEST_EDIT_TODO',
+  todo
 })
 
 export default todoReducer

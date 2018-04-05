@@ -1,6 +1,6 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects'
 import apiService from '../api/apiService'
-import { initializeTodos, createTodo } from '../reducers/reducers'
+import { initializeTodos, createTodo, editTodo } from '../reducers/reducers'
 
 function* getTodos() {
   try {
@@ -30,6 +30,8 @@ function* watchNewTodo() {
 
 function* modifyTodo(action) {
   try {
+    const response = yield call(apiService.editTodo, action.todo)
+    yield put(editTodo(response))
   } catch (error) {
     console.log(error)
   }
@@ -40,5 +42,5 @@ function* watchModifyTodo() {
 }
 
 export default function* rootSaga() {
-  yield all([call(watchGetTodos), call(watchNewTodo)])
+  yield all([call(watchGetTodos), call(watchNewTodo), call(watchModifyTodo)])
 }

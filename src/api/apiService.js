@@ -24,11 +24,12 @@ const createTodo = async todo => {
 
 const editTodo = async todo => {
   try {
-    await fetch(baseUrl + 'todos/' + todo.id, {
+    const response = await fetch(baseUrl + 'todos/' + todo.id, {
       method: 'PUT',
       body: JSON.stringify(todo),
       headers: new Headers({ 'Content-Type': 'application/json' })
     })
+    return await response.json()
   } catch (error) {
     console.log(error)
   }
