@@ -1,1 +1,1 @@
-Simple todo app with redux.
+Simple todo app front end with redux and redux-saga. Json-server used as development backend.
