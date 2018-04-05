@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { requestEditTodo, toggleDone, requestRemoveTodo } from './reducers/reducers'
+import { requestEditTodo, requestToggleDone, requestRemoveTodo } from './reducers/reducers'
 
 class Todo extends Component {
   state = {
@@ -42,13 +42,13 @@ class Todo extends Component {
   }
 
   render() {
-    const { todo, toggleDone, requestRemoveTodo } = this.props
+    const { todo, requestToggleDone, requestRemoveTodo } = this.props
     const { editable } = this.state
     return (
       <li onKeyPress={this.toggleEdit}>
         {!editable ? this.renderNormal(todo) : this.renderEditable(todo)}
         <input
-          onChange={(e) => toggleDone(todo)}
+          onChange={(e) => requestToggleDone(todo)}
           type="checkbox"
           checked={todo.done}
         />
@@ -62,7 +62,7 @@ class Todo extends Component {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
-    { requestEditTodo, toggleDone, requestRemoveTodo },
+    { requestEditTodo, requestToggleDone, requestRemoveTodo },
     dispatch
   )
 }

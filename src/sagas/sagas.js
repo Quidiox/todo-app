@@ -4,7 +4,8 @@ import {
   initializeTodos,
   createTodo,
   editTodo,
-  removeTodo
+  removeTodo,
+  toggleDone
 } from '../reducers/reducers'
 
 function* getTodos() {
@@ -59,11 +60,26 @@ function* watchDeleteTodo() {
   yield takeLatest('REQUEST_REMOVE_TODO', deleteTodo)
 }
 
+function* toggle(action) {
+  try {
+    const todo = Object.assign({}, action.todo, { done: !action.todo.done })
+    const response = yield call(apiService.editTodo, todo)
+    yield put(toggleDone(response))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+function* watchToggle() {
+  yield takeLatest('REQUEST_TOGGLE_DONE', toggle)
+}
+
 export default function* rootSaga() {
   yield all([
     call(watchGetTodos),
     call(watchNewTodo),
     call(watchModifyTodo),
-    call(watchDeleteTodo)
+    call(watchDeleteTodo),
+    call(watchToggle)
   ])
 }

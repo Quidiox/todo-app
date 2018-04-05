@@ -37,7 +37,7 @@ const editTodo = async todo => {
 
 const removeTodo = async todo => {
   try {
-    const response = await fetch(baseUrl + 'todos/' + todo.id, {
+    await fetch(baseUrl + 'todos/' + todo.id, {
       method: 'DELETE'
     })
     return todo

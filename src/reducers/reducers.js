@@ -20,7 +20,7 @@ const todoReducer = (state = [], action) => {
     case 'TOGGLE_DONE':
       return [
         ...state.slice(0, index),
-        Object.assign({}, state[index], { done: !state[index].done }),
+        Object.assign({}, action.todo),
         ...state.slice(index + 1)
       ]
     default:
@@ -59,6 +59,11 @@ export const requestRemoveTodo = todo => ({
 
 export const toggleDone = todo => ({
   type: 'TOGGLE_DONE',
+  todo
+})
+
+export const requestToggleDone = todo => ({
+  type: 'REQUEST_TOGGLE_DONE',
   todo
 })
 
